@@ -1,6 +1,7 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
-FROM python:3.9.6
+# FROM python:3.9.6
+FROM gcr.io/pollum-c23-pc648/trycc-pollum@sha256:a00799eac46347179e70a3747d167cc49837d53af50ffe07b7bd9caba639aeb2
 
 # Copy local code to the container image.
 WORKDIR /app
@@ -16,4 +17,4 @@ RUN pip install -r requirements.txt
 # to be equal to the cores available.
 # Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle instance scaling.
 EXPOSE 8000
-CMD exec gunicorn --bind :8080 main:app
+CMD exec gunicorn --bind :8000 main:app
