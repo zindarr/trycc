@@ -7,7 +7,8 @@ WORKDIR /app
 COPY . ./app
 
 # Install production dependencies.
-RUN pip install -r requirement.txt
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
