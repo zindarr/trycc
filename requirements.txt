@@ -1,1 +1,1 @@
-fastapi==0.96.0
+FastApi==0.96.0
