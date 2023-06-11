@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
-from helpers import *
+from .helpers import *
 
 app = FastAPI()
 
@@ -11,6 +11,6 @@ async def predict_api(file: UploadFile = File(...)):
     prediction = predict_image_class(image)
     return {'prediction': prediction}
 
-if name == "main":
+if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
