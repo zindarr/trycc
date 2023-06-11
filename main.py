@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
-from .helpers import *
+from helpers import *
 
 app = FastAPI()
 
