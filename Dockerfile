@@ -17,4 +17,4 @@ RUN pip install -r requirements.txt
 # to be equal to the cores available.
 # Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle instance scaling.
 EXPOSE 8000
-CMD exec uvicorn --bind :8000 main:app
+CMD exec uvicorn --bind :5000 main:app
