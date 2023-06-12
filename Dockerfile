@@ -1,7 +1,7 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
-# FROM python:3.9.6
-FROM gcr.io/pollum-c23-pc648/trycc-pollum@sha256:a00799eac46347179e70a3747d167cc49837d53af50ffe07b7bd9caba639aeb2
+FROM python:3.9.6
+# FROM gcr.io/pollum-c23-pc648/trycc-pollum@sha256:a00799eac46347179e70a3747d167cc49837d53af50ffe07b7bd9caba639aeb2
 
 # Copy local code to the container image.
 WORKDIR /app
