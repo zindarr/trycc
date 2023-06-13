@@ -11,5 +11,5 @@ async def predict_api(file: UploadFile = File(...)):
     prediction = predict_image_class(image)
     return {'prediction': prediction}
 
-if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=80)
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=port)
