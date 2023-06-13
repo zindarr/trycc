@@ -3,19 +3,21 @@
 # FROM python:3.9.6
 FROM gcr.io/pollum-c23-pc648/trycc-pollum@sha256:a00799eac46347179e70a3747d167cc49837d53af50ffe07b7bd9caba639aeb2
 
-# Copy local code to the container image.
-WORKDIR /app
-COPY . ./app
+# Use working directory /app/model
+WORKDIR /app/model
 
-# Install production dependencies.
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+# Copy and install required packages
+COPY requirements.txt .
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-# Run the web service on container startup. Here we use the uvicorn
-# webserver, with one worker process and 8 threads.
-# For environments with multiple CPU cores, increase the number of workers
-# to be equal to the cores available.
-# Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle instance scaling.
-EXPOSE 8080
-COPY model/ model/
-CMD exec uvicorn --bind :8080 main:app
+# Copy all the content of current directory to working directory
+COPY . .
+
+# Set env variables for Cloud Run
+ENV PORT 80
+ENV HOST 0.0.0.0
+
+EXPOSE 80:80
+
+# Run flask app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
