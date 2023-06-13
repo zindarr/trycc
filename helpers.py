@@ -28,6 +28,7 @@ class_name = [
     'missing queen'
 ]
 
+
 def predict_image_class(image: np.ndarray):
     prediction = model.predict(image)
     idx = np.argmax(prediction)
